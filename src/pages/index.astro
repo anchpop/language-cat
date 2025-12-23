@@ -1,11 +1,914 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <main>
+    <div class="container">
+      <pre class="cat-ascii">{` /\\_/\\
+ ( o.o )
+ > ^ <`}</pre>
+
+      <h1>languagecat</h1>
+
+      <p class="tagline">
+        A <b>free</b> comprehensive dataset for building language-learning apps
+      </p>
+
+      <div class="footer">
+        languagecat is created by <a
+          href="https://twitter.com/chadnauseam"
+          target="_blank"
+          rel="noopener">Andre Popovitch</a
+        >.
+        <a href="https://github.com/anchpop/yap" target="_blank" rel="noopener"
+          >GitHub</a
+        > |
+        <a href="https://discord.gg/mpgqfsH" target="_blank" rel="noopener"
+          >Discord</a
+        >
+      </div>
+
+      <div class="intro">
+        <p>
+          I'm building a language learning app. I noticed I spent as much time
+          gathering and structuring data as I did actually developing the app.
+          I'm releasing the data I gathered so others don't have to spend time
+          on this. This is:
+          <i>languagecat</i>.
+        </p>
+        <p>
+          languagecat provides a curated dataset with everything you need to get
+          started building your own language learning app.
+        </p>
+        <p>
+          This is a public resource created as part of the <a
+            href="https://yap.town"
+            target="_blank"
+            rel="noopener">Yap.town</a
+          > project.
+        </p>
+      </div>
+
+      <div class="what-section">
+        <h2>What do I need to make a language learning app?</h2>
+        <p>
+          You need a dictionary and you need sentences. The dictionary is
+          essential so users can look up words. The sentences are essential so
+          you can have users practice translating. (I know there are other
+          philosophies of language learning apps which might not require this
+          exact setup. But they can make their own datasets. 😸)
+        </p>
+
+        <div class="subsections-grid">
+          <div class="subsection">
+            <h3>The Dictionary</h3>
+            <p>
+              Not any dictionary will do. You need a dictionary focused on
+              language learners, which is different from a traditional
+              dictionary. Traditional dictionaries are <a
+                href="https://en.wiktionary.org/wiki/%C3%A0#French"
+                >exhaustive</a
+              > in their definitions and information, to the point of being mostly
+              useless for beginners to the language. Language learners need just the
+              most essential information.
+            </p>
+          </div>
+
+          <div class="subsection">
+            <h3>The Sentences</h3>
+            <p>
+              Language learners need a gradient of sentences from simple to
+              hard. The most important step in learning a language is getting a
+              lot of input that's suitable for the learner's skill level. So the
+              app needs sentences that match all skill levels.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="whats-in-section">
+        <h2>What's in languagecat?</h2>
+        <p>
+          languagecat is structured as "language packs" from language A to
+          language B. (For example, there is a French-for-English-Speakers pack
+          that contains French words with their definitions in English.)
+        </p>
+        <p>
+          Each language pack contains tens of thousands of words and hundreds of
+          thousands of sentences.
+        </p>
+
+        <h3>Dictionary</h3>
+
+        <div class="dictionary-example">
+          <div class="example-label">
+            French-to-English dictionary entry example:
+          </div>
+          <div class="entry-word">
+            <span class="word">a</span>
+            <span class="lemma">avoir</span>
+            <span class="pos">VERB</span>
+          </div>
+          <div class="entry-definition">
+            <strong>has</strong>
+          </div>
+          <div class="entry-example">
+            <em>Elle a deux chats.</em> — She has two cats.
+          </div>
+          <div class="entry-morphology">
+            Singular, Present, Third person, Indicative
+          </div>
+        </div>
+
+        <p>For each word, I provide:</p>
+        <div class="features-grid">
+          <div class="feature-item">Frequency</div>
+          <div class="feature-item">Definitions</div>
+          <div class="feature-item">Example sentences</div>
+          <div class="feature-item">Pronunciation (IPA)</div>
+          <div class="feature-item">Part of speech</div>
+          <div class="feature-item">Morphology</div>
+        </div>
+
+        <p>
+          Since words can have multiple parts of speech, frequency data is
+          tracked separately for each usage. This means that my frequency
+          analysis was much more sophisticated than just checking for text in my
+          corpus. I ran a custom neural-network-based NLP pipeline on the entire
+          corpus, but more on that later.
+        </p>
+
+        <h3>Phrasebook</h3>
+
+        <p>
+          In addition to individual words, I include multi-word terms and
+          phrases. These are useful because they often have their own meaning
+          that needs to be learned independently from their component words.
+        </p>
+
+        <div class="dictionary-example">
+          <div class="example-label">
+            French-to-English phrasebook entry example:
+          </div>
+          <div class="entry-word">
+            <span class="word">être sur son 31</span>
+          </div>
+          <div class="entry-definition">
+            <strong
+              >to be dressed very smartly; to be dressed to the nines</strong
+            >
+          </div>
+          <div class="entry-example">
+            <em>Pour le mariage, tout le monde était sur son 31.</em> — For the wedding,
+            everyone was dressed to the nines.
+          </div>
+          <div class="entry-morphology">
+            Used when someone is wearing their best, most elegant clothes for a
+            special occasion.
+          </div>
+        </div>
+
+        <h3>Sentences</h3>
+
+        <p>
+          Each sentence in the dataset is fully analyzed with detailed
+          linguistic information for every word, making it easy to build
+          interactive learning experiences.
+        </p>
+
+        <div class="dictionary-example">
+          <div class="example-label">French-to-English sentence example:</div>
+          <div class="sentence-text">
+            <em>Il comprit tout de suite le sens de ses mots.</em>
+          </div>
+          <div class="sentence-translations">
+            <div class="breakdown-label">Translations:</div>
+            <div class="translation-item">
+              <div class="translation-text">
+                He immediately understood the meaning of her words.
+              </div>
+              <div class="translation-type">Human translation</div>
+            </div>
+            <div class="translation-item">
+              <div class="translation-text">
+                He soon comprehended the significance of her words.
+              </div>
+              <div class="translation-type">Machine translation</div>
+            </div>
+          </div>
+          <div class="sentence-breakdown">
+            <div class="breakdown-label">Word-by-word breakdown:</div>
+            <div class="word-breakdown">
+              <div class="word-pair">
+                <div class="breakdown-word">Il</div>
+                <div class="breakdown-detail">(il, PRON)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">comprit</div>
+                <div class="breakdown-detail">(comprendre, VERB)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">tout</div>
+                <div class="breakdown-detail">(tout, ADV)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">de</div>
+                <div class="breakdown-detail">(de, ADP)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">suite</div>
+                <div class="breakdown-detail">(suite, NOUN)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">le</div>
+                <div class="breakdown-detail">(le, DET)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">sens</div>
+                <div class="breakdown-detail">(sens, NOUN)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">de</div>
+                <div class="breakdown-detail">(de, ADP)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">ses</div>
+                <div class="breakdown-detail">(son, DET)</div>
+              </div>
+              <div class="word-pair">
+                <div class="breakdown-word">mots</div>
+                <div class="breakdown-detail">(mot, NOUN)</div>
+              </div>
+            </div>
+          </div>
+          <div class="sentence-multiword">
+            <div class="breakdown-label">Multi-word terms detected:</div>
+            <div class="multiword-list">
+              <span class="multiword-high">tout de suite</span>
+              <span class="multiword-high">de suite</span>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          This breakdown is extremely useful for building language learning apps
+          because it allows you to programmatically understand what's happening
+          in a sentence. For example, "bois" in French can be either a verb
+          ("drink") or a noun ("wood"). The two usages have completely different
+          meanings. Looking at just the text, they're indistinguishable, but
+          with this linguistic breakdown, your software can easily tell the
+          difference.
+        </p>
+      </div>
+
+      <div class="nlp-section">
+        <h2>Custom NLP Models</h2>
+        <p>
+          To create the sophisticated linguistic analysis in languagecat, I
+          custom trained my own suite of NLP models. These models are what
+          enable the word-by-word breakdown, part-of-speech tagging, and
+          frequency analysis that's separated by word usage.
+        </p>
+        <p>
+          All of my models are <a
+            href="https://huggingface.co/collections/anchpop/lexide-nlp-models"
+            target="_blank"
+            rel="noopener">available on Hugging Face</a
+          >
+          for anyone to use.
+        </p>
+      </div>
+
+      <div class="movie-section">
+        <h2>Movie Data</h2>
+        <p>
+          Sentences come from two main sources: <a
+            href="https://tatoeba.org"
+            target="_blank"
+            rel="noopener">Tatoeba</a
+          >
+          and movies from <a
+            href="https://www.opensubtitles.org"
+            target="_blank"
+            rel="noopener">Open Subtitles</a
+          >.
+        </p>
+        <p>
+          For sentences sourced from movies, I include the localized movie names
+          and posters for the language being learned. For example, "Fight Club"
+          becomes "El Club de la Lucha" in the Spanish dataset, complete with
+          the Spanish movie poster:
+        </p>
+        <div class="movie-poster-example">
+          <img
+            src="/src/assets/El-Club-de-la-Lucha.jpg"
+            alt="El Club de la Lucha movie poster"
+          />
+          <div class="poster-caption">El Club de la Lucha (Fight Club)</div>
+        </div>
+        <p>
+          I also provide separate frequency lists for each movie in the dataset.
+          This allows you to show your users how close they are to being able to
+          watch a particular movie—a great motivational feature for language
+          learners.
+        </p>
+      </div>
+
+      <div class="format-section">
+        <h2>Format</h2>
+        <p>
+          The data is provided in JSON, which is straightforward to parse in any
+          programming language. Each part of each pack (e.g., the list of
+          sentences, the translations) has its own JSON file, so you can only
+          download what you need.
+        </p>
+        <p>
+          However, JSON is incredibly slow to parse when you're dealing with
+          tens of thousands of words and hundreds of thousands of sentences. For
+          this reason, I also provide the data in a custom format using a fork
+          of rkyv (a Rust library that allows extremely fast deserialization).
+          This is the same format used internally by yap.town. Please contact me
+          if you'd like to use this format; it's a little bit involved in order
+          to be as efficient as possible. It will not be possible to use this
+          format outside of a Rust program.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>Download</h2>
+        <p>
+          The data is <a
+            href="https://github.com/anchpop/yap/tree/main/out"
+            target="_blank"
+            rel="noopener">available here</a
+          >.
+        </p>
+      </div>
+
+      <div class="packs-section">
+        <h2>Language Packs Provided So Far</h2>
+        <ul>
+          <li>🇫🇷 French to English</li>
+          <li>🇬🇧 English to French</li>
+          <li>🇪🇸 English to Spanish</li>
+          <li>🇩🇪 English to German</li>
+          <li>🇰🇷 English to Korean (experimental)</li>
+        </ul>
+        <p>
+          Creating each language pack takes quite a bit of time and money. In
+          total, I've spent about $3000 on this project so far.
+        </p>
+        <p>I'm currently working on Italian and Portuguese language packs.</p>
+      </div>
+
+      <div class="closing-section">
+        <h2>What's Next?</h2>
+        <p>
+          I'm really curious to see what people will build with this. Language
+          learning is such a personal journey, and I hope this dataset can save
+          you the countless hours I spent gathering and structuring all this
+          data.
+        </p>
+        <p>
+          If you end up building something with languagecat, I'd love to hear
+          about it. <a
+            href="https://discord.gg/mpgqfsH"
+            target="_blank"
+            rel="noopener">Join the Discord</a
+          > to share what you're working on. Happy building!
+        </p>
+      </div>
+
+      <div class="license">
+        <h2>License</h2>
+        <p>
+          This dataset is licensed under <a
+            href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+            target="_blank"
+            rel="noopener">CC BY-NC-ND 4.0</a
+          >.
+        </p>
+        <p class="license-terms">
+          You are free to share this dataset with proper attribution, but you
+          may not use it for commercial purposes or create derivative works.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    main {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 750px;
+      text-align: center;
+    }
+
+    .cat-ascii {
+      font-size: 1.2rem;
+      color: #ff69b4;
+      margin-bottom: 2rem;
+      font-family: monospace;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .intro {
+      text-align: left;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .intro p {
+      margin-bottom: 1.2rem;
+    }
+
+    .what-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .what-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .what-section > p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .subsections-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .subsection h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: #ff69b4;
+    }
+
+    .subsection p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .subsections-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .whats-in-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .whats-in-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .whats-in-section h3 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #ff69b4;
+    }
+
+    .whats-in-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .dictionary-example {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-left: 3px solid #ff69b4;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+
+    .example-label {
+      font-size: 0.85rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .entry-word {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .entry-word .word {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff69b4;
+    }
+
+    .entry-word .lemma {
+      font-size: 1rem;
+      color: #999;
+    }
+
+    .entry-word .pos {
+      font-size: 0.75rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .entry-definition {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .entry-example {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .entry-example em {
+      color: #ffffff;
+    }
+
+    .entry-morphology {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .sentence-text {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+    }
+
+    .sentence-translations {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #333;
+    }
+
+    .translation-item {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      background: #0a0a0a;
+      border-left: 2px solid #444;
+      border-radius: 3px;
+    }
+
+    .translation-item:first-of-type {
+      border-left-color: #ff69b4;
+    }
+
+    .translation-text {
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+
+    .translation-type {
+      font-size: 0.8rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sentence-breakdown,
+    .sentence-multiword {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #333;
+    }
+
+    .breakdown-label {
+      font-size: 0.85rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .word-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      line-height: 1.4;
+    }
+
+    .word-pair {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .breakdown-word {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ff69b4;
+      text-align: center;
+    }
+
+    .breakdown-detail {
+      font-size: 0.8rem;
+      color: #888;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .multiword-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .multiword-high,
+    .multiword-low {
+      background: #0a0a0a;
+      border: 1px solid #444;
+      padding: 0.4rem 0.8rem;
+      border-radius: 3px;
+      font-size: 0.95rem;
+    }
+
+    .multiword-high {
+      color: #ff69b4;
+      border-color: #ff69b4;
+    }
+
+    .multiword-low {
+      color: #888;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .feature-item {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: #ffffff;
+      text-align: center;
+      transition: border-color 0.2s ease;
+    }
+
+    .feature-item:hover {
+      border-color: #ff69b4;
+    }
+
+    @media (min-width: 600px) {
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .nlp-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .nlp-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .nlp-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .movie-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .movie-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .movie-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .movie-poster-example {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 4px;
+    }
+
+    .movie-poster-example img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .poster-caption {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #ff69b4;
+      text-align: center;
+    }
+
+    .format-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .format-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .format-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .download-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .download-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .download-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .packs-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .packs-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .packs-section ul {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .packs-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .packs-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .closing-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .closing-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .closing-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .license {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .license h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .license p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+    }
+
+    .license-terms {
+      color: #999;
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .footer a {
+      color: #ff69b4;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+      }
+
+      .intro {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </Layout>
