@@ -177,11 +177,10 @@ import Layout from "../layouts/Layout.astro";
         </div>
 
         <p>
-          Since words can have multiple parts of speech, frequency data is
-          tracked separately for each usage. This means that my frequency
-          analysis was much more sophisticated than just checking for text in my
-          corpus. I ran a custom neural-network-based NLP pipeline on the entire
-          corpus, but more on that later.
+          The same word can have different parts of speech. For example, "run" can be a verb or a noun.
+          So I track frequency separately for each part of speech. This required running a custom
+          neural-network-based NLP pipeline on my entire corpus to identify the part of speech for
+          each word in context (more on that later).
         </p>
 
         <h3>Phrasebook</h3>
