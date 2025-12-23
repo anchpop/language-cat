@@ -29,17 +29,62 @@ import Layout from "../layouts/Layout.astro";
         >
       </div>
 
+      <div class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-flag">🇫🇷</div>
+            <div class="stat-label">French</div>
+            <div class="stat-number">43k</div>
+            <div class="stat-desc">words</div>
+            <div class="stat-number">286k</div>
+            <div class="stat-desc">sentences</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-flag">🇪🇸</div>
+            <div class="stat-label">Spanish</div>
+            <div class="stat-number">48k</div>
+            <div class="stat-desc">words</div>
+            <div class="stat-number">234k</div>
+            <div class="stat-desc">sentences</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-flag">🇩🇪</div>
+            <div class="stat-label">German</div>
+            <div class="stat-number">57k</div>
+            <div class="stat-desc">words</div>
+            <div class="stat-number">231k</div>
+            <div class="stat-desc">sentences</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-flag">🇬🇧</div>
+            <div class="stat-label">English</div>
+            <div class="stat-number">35k</div>
+            <div class="stat-desc">words</div>
+            <div class="stat-number">143k</div>
+            <div class="stat-desc">sentences</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-flag">🇰🇷</div>
+            <div class="stat-label">Korean</div>
+            <div class="stat-number">10k</div>
+            <div class="stat-desc">words</div>
+            <div class="stat-number">7k</div>
+            <div class="stat-desc">sentences</div>
+          </div>
+        </div>
+      </div>
+
       <div class="intro">
         <p>
-          I'm building a language learning app. I noticed I spent as much time
-          gathering and structuring data as I did actually developing the app.
-          I'm releasing the data I gathered so others don't have to spend time
-          on this. This is:
-          <i>languagecat</i>.
+          I'm building a free language-learning app. But I noticed I spent as
+          much time gathering and structuring data as I did actually developing
+          the app. So I'm releasing the data I gathered, to help others also
+          interested in building a language-learning app. Welcome to
+          <i>languagecat</i>!
         </p>
         <p>
           languagecat provides a curated dataset with everything you need to get
-          started building your own language learning app.
+          started building your own language-learning app.
         </p>
         <p>
           This is a public resource created as part of the <a
@@ -51,12 +96,12 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <div class="what-section">
-        <h2>What do I need to make a language learning app?</h2>
+        <h2>What do I need to make a language-learning app?</h2>
         <p>
           You need a dictionary and you need sentences. The dictionary is
           essential so users can look up words. The sentences are essential so
           you can have users practice translating. (I know there are other
-          philosophies of language learning apps which might not require this
+          philosophies of language-learning apps which might not require this
           exact setup. But they can make their own datasets. 😸)
         </p>
 
@@ -65,12 +110,12 @@ import Layout from "../layouts/Layout.astro";
             <h3>The Dictionary</h3>
             <p>
               Not any dictionary will do. You need a dictionary focused on
-              language learners, which is different from a traditional
+              language-learners, which is different from a traditional
               dictionary. Traditional dictionaries are <a
                 href="https://en.wiktionary.org/wiki/%C3%A0#French"
                 >exhaustive</a
               > in their definitions and information, to the point of being mostly
-              useless for beginners to the language. Language learners need just the
+              useless for beginners to the language. language-learners need just the
               most essential information.
             </p>
           </div>
@@ -78,7 +123,7 @@ import Layout from "../layouts/Layout.astro";
           <div class="subsection">
             <h3>The Sentences</h3>
             <p>
-              Language learners need a gradient of sentences from simple to
+              language-learners need a gradient of sentences from simple to
               hard. The most important step in learning a language is getting a
               lot of input that's suitable for the learner's skill level. So the
               app needs sentences that match all skill levels.
@@ -252,7 +297,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
 
         <p>
-          This breakdown is extremely useful for building language learning apps
+          This breakdown is extremely useful for building language-learning apps
           because it allows you to programmatically understand what's happening
           in a sentence. For example, "bois" in French can be either a verb
           ("drink") or a noun ("wood"). The two usages have completely different
@@ -389,7 +434,11 @@ import Layout from "../layouts/Layout.astro";
             href="https://github.com/anchpop/yap/issues/50"
             target="_blank"
             rel="noopener">requested this</a
-          >.
+          >. Please cite this page (or <a
+            href="https://yap.town"
+            target="_blank"
+            rel="noopener">Yap.Town</a
+          >) if you do.
         </p>
       </div>
 
@@ -407,7 +456,10 @@ import Layout from "../layouts/Layout.astro";
           may not use it for commercial purposes or create derivative works.
         </p>
         <p class="license-terms">
-          My goal with this license is that people can't use this as part of commercial projects (unless otherwise negotiated, I will probably say yes if you ask), and that any improvements anyone makes are upstreamed to the official version so everyone can benefit.
+          My goal with this license is that people can't use this as part of
+          commercial projects (unless otherwise negotiated, I will probably say
+          yes if you ask), and that any improvements anyone makes are upstreamed
+          to the official version so everyone can benefit.
         </p>
       </div>
     </div>
@@ -930,6 +982,64 @@ import Layout from "../layouts/Layout.astro";
 
     .footer a {
       color: #ff69b4;
+    }
+
+    .stats-section {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-flag {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #999;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff69b4;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-desc {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px) {
