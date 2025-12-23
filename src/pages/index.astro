@@ -357,7 +357,10 @@ import Layout from "../layouts/Layout.astro";
         </ul>
         <p>
           Creating each language pack takes quite a bit of time and money. In
-          total, I've spent about $3000 on this project so far.
+          total, I've spent about $3000 on this project so far. To be clear,
+          most of this data wasn't generated manually—it came from a combination
+          of external sources (Tatoeba and Open Subtitles), LLMs, and a small
+          amount of manual labeling.
         </p>
         <p>I'm currently working on Italian and Portuguese language packs.</p>
       </div>
@@ -377,6 +380,16 @@ import Layout from "../layouts/Layout.astro";
             target="_blank"
             rel="noopener">Join the Discord</a
           > to share what you're working on. Happy building!
+        </p>
+
+        <p>
+          This data could be used to create Anki decks that would be, to my
+          knowledge, pedagogically better and more comprehensive than any that
+          currently exist. Someone has actually <a
+            href="https://github.com/anchpop/yap/issues/50"
+            target="_blank"
+            rel="noopener">requested this</a
+          >.
         </p>
       </div>
 
@@ -837,6 +850,25 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .packs-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .ideas-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      text-align: left;
+    }
+
+    .ideas-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .ideas-section p {
       font-size: 1.1rem;
       line-height: 1.8;
       margin-bottom: 1rem;
